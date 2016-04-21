@@ -13,12 +13,12 @@ class HomeViewController: UIViewController {
     @IBAction func nextViewButtonPressed(sender: AnyObject) {
         
         print("Button pressed")
-        self.performSegueWithIdentifier("SecondViewSegue", sender: self)
+        self.goToStoryBoard("SecondScreenViewController")
         
     }
     @IBAction func dataTableViewButtonPressed(sender: AnyObject) {
         
-        self.performSegueWithIdentifier("DataTableViewSegue", sender: self)
+        self.goToStoryBoard("DataTableViewController")
         
     }
     
@@ -49,7 +49,14 @@ class HomeViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
+    func goToStoryBoard(name: String) {
+        
+        let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = mainStoryboard.instantiateViewControllerWithIdentifier(name)
+        self.navigationController?.pushViewController(vc, animated: true)
+        
+    }
 
 }
 

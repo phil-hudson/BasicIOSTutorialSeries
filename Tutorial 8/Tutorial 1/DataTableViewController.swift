@@ -44,7 +44,7 @@ class DataTableViewController : UIViewController, UITableViewDelegate, UITableVi
         
         print(result)
 
-        self.performSegueWithIdentifier("ResultsSegue", sender: self)
+        self.goToStoryBoard("ResultViewController")
     }
     
     func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
@@ -63,14 +63,17 @@ class DataTableViewController : UIViewController, UITableViewDelegate, UITableVi
         
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "ResultsSegue" {
+    func goToStoryBoard(name: String) {
+        
+        if name == "ResultViewController" {
             
-            let destinationVC = segue.destinationViewController as! ResultViewController
+            let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let vc = mainStoryboard.instantiateViewControllerWithIdentifier(name) as! ResultViewController
+            vc.catName = self.result
             
-            destinationVC.catName = self.result
-            
+            self.navigationController?.pushViewController(vc, animated: true)
         }
+        
     }
     
 }

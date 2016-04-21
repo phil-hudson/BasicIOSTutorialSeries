@@ -24,5 +24,5 @@ class ResultViewController : UIViewController {
         }
         
     }
-    
+
 }

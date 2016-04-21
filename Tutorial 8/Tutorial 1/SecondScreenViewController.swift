@@ -10,12 +10,6 @@ import UIKit
 
 class SecondScreenViewController: UIViewController {
     
-    @IBAction func backButtonPressed(sender: AnyObject) {
-        
-        print("back button pressed")
-        self.performSegueWithIdentifier("HomeSegue", sender: self)
-        
-    }
     
     @IBAction func pictureButtonPressed(sender: AnyObject) {
         
@@ -29,6 +23,14 @@ class SecondScreenViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func goToStoryBoard(name: String) {
+        
+        let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = mainStoryboard.instantiateViewControllerWithIdentifier(name)
+        self.navigationController?.pushViewController(vc, animated: true)
+        
     }
     
 }
